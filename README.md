@@ -1,10 +1,12 @@
 # Machine Learning Algorithms - Playground
 
-This repositories includes the jupyter notebooks I made learning the common machine learning algorithms.
+This repositories includes the jupyter notebooks I made while learning the common machine learning algorithms.
 
 Which are:
 
 - K-Nearest Neighbors Classifier
+- Naive Bayes Classifier
+- ...
 
 ## K-Nearest Neighbors Classifier
 
@@ -25,5 +27,40 @@ StandardScaler works by scaling the data to have a mean of 0 and a variance of 1
 
 Using GridCV, I found the best parameter for the data in range of 100 is **75**
 
+### Results
 Results obtained:
+
 ![alt text](assets/knn.png)
+
+## Naive Bayes Classifier
+
+A supervised learning algorithm based on the Bayes Theorem (Probability), with the 'naive' assumption that all features are independent of each other. This algorithm, eventhough seems to be inaccurate, actually performs really well for high dimensional data in practice.
+> The importance of irrelevant features will be really low because each feature is evaluated independently.
+> Also, since this avoids complex calculations to form feature interactions, it has high computational efficiency.
+
+Core Idea is to calculate the probability of each class for a given input and pick the class with the highest probability.
+
+$$P(X|y) = \prod_{i=1}^{n} P(x_i | y)$$
+
+^ This is the naive assumption.
+
+### TF-IDF
+TF stands for Text Frequency: How many times the word appeared in a specific document.
+IDF stands for Inverse Document Frequency: It is a score for how rare a word is across all the documents (rarer->higher score).
+
+A TF-IDF Vectorizer (*TFidFVectorizer from Scikit-learn*) creates a matrix for extracted words from documents where:
+- Each row represents a document
+- Each column represents a word (from the vocabulary)
+- Value in each cell is the TF-IDF score (Product of TF and IDF)
+
+### Results
+
+![classification report for nb](assets/nb-classifier-classification-report.png)
+
+> The three classes below obtained bad results - because words like "God" "faith" are all commonly used in them, yet since naive bayes assumes independence, no relation is found between them.
+
+![bad scores nb](assets/nb-bad-scores.png)
+
+> An example classification:
+
+![sample nb result](assets/nb-result.png)
