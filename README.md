@@ -64,3 +64,30 @@ A TF-IDF Vectorizer (*TFidFVectorizer from Scikit-learn*) creates a matrix for e
 > An example classification:
 
 ![sample nb result](assets/nb-result.png)
+
+## Support Vector Classifiction
+A non linear supervised learning algorithm which basically uses a hyperplane to seperate datapoints into multiple classes.
+
+This 'hyperplane' is chosen in a way to maximize the margin of decision boundary. It uses a linear combination equation that looks similar to linear regression but only the datapoints at the margins (aka the support vectors) influence the hyperplane.
+$$W.X + b = 0$$
+
+Two types of SVM classifiers exist, Hard Margin which is the one I was referring to earlier and Soft Margin which not only optimize to maximize the margin but also allows keeping a number of misclassifications possible, thus making it more suitable for real world imperfect data. This optimization is done using Lagrange multipliers.
+
+### Kernel Trick!
+What if data points are in concentric circles? No single line/plane can seperate it like that.
+
+The approach to solve this is by projecting the dataset to a higher dimension, thus making the datapoints linearly seperable.
+
+A kernel function can calculate the dot product of the vectors in this new high dimensional space without actually transforming the data.
+
+This allows us to find complex boundaries efficiently.
+
+### Results
+
+Classification report of the State Vector Classifier trained on 8 bit digits.
+
+![classification report for svm](assets/svm-report.png)
+
+An example error that occured:
+
+![error in svm](assets/svm-mistake.png)
