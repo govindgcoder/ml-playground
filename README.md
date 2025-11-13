@@ -6,7 +6,8 @@ Which are:
 
 - K-Nearest Neighbors Classifier
 - Naive Bayes Classifier
-- ...
+- Support Vector Classification
+- Decision Trees
 
 ## K-Nearest Neighbors Classifier
 
@@ -91,3 +92,32 @@ Classification report of the State Vector Classifier trained on 8 bit digits.
 An example error that occured:
 
 ![error in svm](assets/svm-mistake.png)
+
+## Decision Trees
+
+A literal flow chart of if/then/else questions, the machine learning comes when the model decides on which is the best condition to classify based on a feature. It is a greedy algorithm, therefore the model chooses the best choice at the moment without any backtracking.
+
+At each node of a decision tree:
+1. Chooses the best feature to split the data based on
+2. Maximizes information gain (or reduce impurity)
+3. Continue this till stopping condition (like max_depth)
+
+> Interpretability is the main benefit of decision trees
+
+In this notebook, I'm trying to predict whether a heart attack may occur or not based on different features like age, sex, ca, etc. (hearts.csv dataset).
+
+### Results
+
+When max_depth=4:
+
+![alt text](assets/max-depth-4.png)
+
+It was not an ideal result, since recall is 0.78 for class 1 aka heart attack. This means 22% of actual heart attack cases are missed by the model. This is undeployable in practise.
+
+![alt text](assets/decision_tree_hearts.png)
+
+There is a weird classification issue here, where when ca is 0, the model sets the class to be 'heartattack', while that is counter intuitive. This explains the lack of good performance.
+
+> This indicates maybe the dataset is flawed, or the feature ca is unreliable, or some other reason.
+
+The low recall => this is a bad model.
